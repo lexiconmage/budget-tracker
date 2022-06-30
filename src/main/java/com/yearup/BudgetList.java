@@ -103,7 +103,7 @@ public class BudgetList {
 	}
 	public float netIncome() {
 		//TODO: implement
-		//income - expense;
+		//income - expense
 
 		return 0;
 	}
