@@ -20,7 +20,7 @@ public class BudgetList {
 		//getFloat("rent")
 		//getFloat(Utilities);
 		//getFloat("Cable")
-		//getFloat("water/gas")
+		//getFloat("water/gas");
 		return null;
 	}
 	public float netIncome() {
