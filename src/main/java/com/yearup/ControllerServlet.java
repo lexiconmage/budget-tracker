@@ -35,6 +35,7 @@ public class ControllerServlet extends HttpServlet {
 		
 		String action = request.getPathInfo();
 		
+		
 		switch(action) {
 		case "/homepage":
 			getHome(request, response);
@@ -48,28 +49,39 @@ public class ControllerServlet extends HttpServlet {
 		case "/dashboard":
 			getDash(request, response);
 			break;
+		case "/contact":
+			System.out.println("HIT");
+			getContact(request, response);
+			break;
+		default:
+			response.sendError(0);
 		}
 	}
 
 	//These are the methods that help with navigation. Waiting on DB and other functionalities to be placed
 	private void getHome(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 
-		request.getRequestDispatcher("/homepage.jsp").forward(request, response);
+		request.getRequestDispatcher("/homepage.html").forward(request, response);
 	}
 	
 	private void getLogin(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/login.html").forward(request, response);
 	}
 	
 	private void getSignup(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 
-		request.getRequestDispatcher("/signup.jsp").forward(request, response);
+		request.getRequestDispatcher("/signup.html").forward(request, response);
 	}
 	
 	private void getDash(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 
 		request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
+	}
+	
+	private void getContact(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
+
+		request.getRequestDispatcher("/contact.html").forward(request, response);
 	}
 	
 	/**
