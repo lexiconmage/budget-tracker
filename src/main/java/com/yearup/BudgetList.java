@@ -29,7 +29,7 @@ public class BudgetList {
 				System.out.println("Connection Established to MySQL Database");
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();//
 		}
 		
 	}
