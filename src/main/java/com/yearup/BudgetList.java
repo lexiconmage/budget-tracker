@@ -10,10 +10,17 @@ public class BudgetList {
 	
 	public List<Income> IncomeList() {
 		//TODO: implement
+		//get("salary")
+		//get("otherIncome")
 		return null;
 	}
 	public List<Expense> ExpenseList() {
 		//TODO: implement
+		//getFloat(mortgage")
+		//getFloat("rent")
+		//getFloat(Utilities);
+		//getFloat("Cable")
+		//getFloat("water/gas")
 		return null;
 	}
 	public float netIncome() {
