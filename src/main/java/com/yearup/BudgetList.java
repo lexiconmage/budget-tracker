@@ -15,21 +15,13 @@ public class BudgetList {
 	public BudgetList() {
 		
 	}
-	private String jdbcURL = "";
-	private String jdbcUsername = "root";
-	private String jdbcPassword = "";
 	private Connection jdbcConnection;
 	
 	public void connect() {
 		try {
-			if(jdbcConnection == null || jdbcConnection.isClosed()) {
-				Class.forName("com.mysql.jdbc.Driver");
-				jdbcConnection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-				
-				System.out.println("Connection Established to MySQL Database");
-			}
-		}catch(Exception e) {
-			e.printStackTrace();//
+			jdbcConnection = new DataConnector().getConnection();
+		} catch(SQLException ex) {
+			ex.printStackTrace();
 		}
 		
 	}
@@ -54,10 +46,10 @@ public class BudgetList {
 			
 			while(resultSet.next()) {
 				String incomeName = resultSet.getString("incomeName");
-				String date = resultSet.getString("date");
+				Date date = resultSet.getDate("date");
 				float incomeAmount = resultSet.getFloat("incomeAmount");
 				
-				Income income = new Income(incomeName,incomeAmount,date);
+				Income income = new Income(incomeAmount,incomeName,date);
 				incomeList.add(income);
 			}
 			resultSet.close();
