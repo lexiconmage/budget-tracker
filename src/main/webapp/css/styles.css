@@ -1,0 +1,135 @@
+html,body {
+  height: 100%;
+  
+}
+
+.signup-body, .login-body{
+	height: 100%;
+	background: rgb(255,255,255);
+	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(137,198,207,0.8631827731092436) 4%, rgba(137,198,207,1) 49%);
+	font-family: "Abril Fatface"; 
+	font-size: 24px; 
+	font-style: normal; 
+	font-variant: normal; 
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.login-form{
+	background-color: white;
+	border-radius: 25px;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content:center;
+	width: 50%;
+	height:50%;
+	
+}
+
+.signup-form{
+	background-color: white;
+	border-radius: 25px;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50%;
+	height:50%;
+	justify-content:center;
+	
+}
+
+.login-form input[type=text] {
+  padding:10px;
+  border-radius:10px;
+}
+.login-form input[type=password] {
+  padding:10px;
+  border-radius:10px;
+}
+.login-form input[type=submit] {
+  	color: black;
+	text-decoration: none;
+	border: solid;
+	border-radius: 50%;
+	font-size: 12px;
+	padding: 10px;
+	margin-left: 20px;
+	background-color: white;
+}
+
+.signup-form input[type=text] {
+  padding:10px;
+  border-radius:10px;
+}
+.signup-form input[type=password] {
+  padding:10px;
+  border-radius:10px;
+}
+.signup-form input[type=submit] {
+  	color: black;
+	text-decoration: none;
+	border: solid;
+	border-radius: 50%;
+	font-size: 12px;
+	padding: 10px;
+	margin-left: 20px;
+	background-color: white;
+}
+
+.signup-form h1{
+	background-color: white;
+	text-align: center;
+}
+
+.login-header {
+	color: white;
+	letter-spacing: 5px;
+	line-height: 42px;
+}
+
+.login-header h1{
+	color: white;
+}
+
+.login-header h2{
+	color: white;
+	font-size: 20px;
+}
+.signup-header{
+	color: white;
+	letter-spacing: 5px;
+	line-height: 42px;
+}
+
+.signup-header h1{
+	color: white;
+}
+
+.signup-header h2{
+	color: white;
+	font-size: 20px;
+}
+
+.signup-body a{
+	color: white;
+	text-decoration: none;
+	border: solid;
+	border-radius: 50%;
+	font-size: 12px;
+	padding: 10px;
+	margin-left: 20px;
+}
+
+.login-body a{
+	color: white;
+	text-decoration: none;
+	border: solid;
+	border-radius: 50%;
+	font-size: 12px;
+	padding: 10px;
+	margin-left: 20px;
+}
