@@ -10,18 +10,26 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
+
+import com.pluralsight.Book;
+
 /**
  * Servlet implementation class ControllerServlet
  * 
  */
 public class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private BudgetList list;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ControllerServlet() {
         super();
+        
+        list = new BudgetList();
+        list.connect();
+        list.disconnect();
         // TODO Auto-generated constructor stub
     }
 
@@ -47,7 +55,7 @@ public class ControllerServlet extends HttpServlet {
 			getSignup(request, response);
 			break;
 		case "/dashboard":
-			getDash(request, response);
+			listBudget(request, response);
 			break;
 		case "/contact":
 			System.out.println("HIT");
@@ -74,13 +82,15 @@ public class ControllerServlet extends HttpServlet {
 		request.getRequestDispatcher("/signup.html").forward(request, response);
 	}
 	
-	private void getDash(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
-
-		request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
-	}
+/**
+ * 	Not needed since we are using listBudget ---------------------------------------------------
+ */
+//	private void getDash(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
+//
+//		request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
+//	}
 	
 	private void getContact(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
-
 		request.getRequestDispatcher("/contact.html").forward(request, response);
 	}
 	
@@ -92,6 +102,13 @@ public class ControllerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private void listBudget(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
+		ArrayList<BudgetList> budgetArrList = list.getList();
+		
+		request.setAttribute("budget_list", budgetArrList);
+		request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
 	}
 
 }
