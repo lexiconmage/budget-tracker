@@ -2,6 +2,7 @@ package com.yearup;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,7 +37,7 @@ public class BudgetList {
 		}
 	}
 	
-	public List<Income> IncomeList() {
+	public ArrayList<Income> getIncomeList() {
 		//TODO: implement
 		connect();
 		ArrayList<Income> incomeList = new ArrayList<>();
@@ -61,7 +62,7 @@ public class BudgetList {
 		disconnect();
 		return incomeList;
 	}
-	public List<Expense> ExpenseList() {
+	public ArrayList<Expense> getExpenseList() {
 		connect();
 		//TODO: implement
 		//getFloat(mortgage")
@@ -94,14 +95,52 @@ public class BudgetList {
 	public float netIncome() {
 		//TODO: implement
 		//income - expense
-
-		return 0;
+		float totalExpense = 0;
+		for(Expense exp : getExpenseList()){
+			totalExpense += exp.getAmount();
+		}
+		
+		float totalIncome = 0;
+		for(Income inc : getIncomeList()) {
+			totalIncome += inc.getAmount();
+		}
+		return totalIncome - totalExpense;
 	}
 	
-	public void addExpense(float value, String title, Date date) {
-		//TODO: implement
+	public boolean addExpense(Expense exp) {
+		connect();
+		String sql = "INSERT INTO budgetitem (title, amount) VALUES (?,?)";
+		boolean rowInserted = false;
+		try {
+			PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+			statement.setString(1, exp.getName());
+			statement.setFloat(2, exp.getAmount());
+			
+			rowInserted = statement.executeUpdate() > 0;
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		disconnect();
+		return rowInserted;
 	}
-	public void addIncome(float value, String title, Date date) {
-		//TODO: implement
+	public boolean addIncome(Income inc) {
+		connect();
+		String sql = "INSERT INTO budgetitem (title, amount) VALUES (?,?)";
+		boolean rowInserted = false;
+		try {
+			PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+			statement.setString(1, inc.getName());
+			statement.setFloat(2, inc.getAmount());
+			
+			rowInserted = statement.executeUpdate() > 0;
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		disconnect();
+		return rowInserted;
 	}
 }
