@@ -4,27 +4,27 @@ import java.util.Date;
 
 public class Expense extends Money {
 //	expenseAmount, expenseName, date
-	private float expenseAmount; 
-	private String expenseName; 
-	private Date date;
+	private float amount; 
+	private String name; 
+	private Date date; 
 	
-	public Expense(float expenseAmount, String expenseName, Date date) {
-		this.expenseAmount = expenseAmount;
-		this.expenseName = expenseName;
+	public Expense(float amount, String name, Date date) {
+		this.amount = amount;
+		this.name = name;
 		this.date = date;
 	}
 	
-	public void setExpenseAmount(float val) {
-		this.expenseAmount = val;
+	public void setAmount(float val) {
+		this.amount = val;
 	}
-	public void setExpenseName(String val) {
-		this.expenseName = val;
+	public void setName(String val) {
+		this.name = val;
 	}
-	public float getExpenseAmount() {
-		return this.expenseAmount;
+	public float getAmount() {
+		return this.amount;
 	}
-	public String getExpenseName() {
-		return this.expenseName;
+	public String getName() {
+		return this.name;
 	}
 }
 
