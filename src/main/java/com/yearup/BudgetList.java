@@ -10,12 +10,40 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.pluralsight.Book;
 
 public class BudgetList {
+	private ArrayList<Expense> exp;
+	private ArrayList<Income> inc;
+	private int id;
+	
 	public BudgetList() {
 		
 	}
+	
+	public BudgetList(ArrayList<Expense> exp, ArrayList<Income> inc, int id) {
+		this.id = id;
+		this.exp.addAll(exp);
+		this.inc.addAll(inc);
+	}
+	
+	public void setIncList(ArrayList<Income> inc) {
+		this.inc.clear();
+		this.inc.addAll(inc);
+	}
+	
+	public void setExpList(ArrayList<Expense> exp) {
+		this.exp.clear();
+		this.exp.addAll(exp);
+	}
+	
+	public ArrayList<Expense> getExpList(){
+		return this.exp;
+	}
+	
+	public ArrayList<Income> getIncList(){
+		return this.inc;
+	}
+	
 	private Connection jdbcConnection;
 	
 	public void connect() {
@@ -37,13 +65,36 @@ public class BudgetList {
 		}
 	}
 	
+	public ArrayList<BudgetList> getList(){
+		connect();
+		ArrayList<BudgetList> budgetList = new ArrayList<>();
+		try {
+			Statement statement = jdbcConnection.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM budgetlist");
+			
+			while(resultSet.next()) {
+				int listId = resultSet.getInt("list_id");
+				
+				BudgetList item = new BudgetList(getExpenseList(),getIncomeList(), listId);
+				budgetList.add(item);
+			}
+			resultSet.close();
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		disconnect();
+		return budgetList;
+	}
+	
 	public ArrayList<Income> getIncomeList() {
 		//TODO: implement
 		connect();
 		ArrayList<Income> incomeList = new ArrayList<>();
 		try {
 			Statement statement = jdbcConnection.createStatement();
-			ResultSet resultSet = statement.executeQuery("");
+			ResultSet resultSet = statement.executeQuery("SELECT title, amount FROM budgetlist WHERE amount > 0");
 			
 			while(resultSet.next()) {
 				String incomeName = resultSet.getString("incomeName");
@@ -73,7 +124,7 @@ public class BudgetList {
 		ArrayList<Expense> expenseList = new ArrayList<>();
 		try {
 			Statement statement = jdbcConnection.createStatement();
-			ResultSet resultSet = statement.executeQuery("");
+			ResultSet resultSet = statement.executeQuery("SELECT title, amount FROM budgetlist WHERE amount < 0");
 			
 			while(resultSet.next()) {
 				String expenseName = resultSet.getString("name");
