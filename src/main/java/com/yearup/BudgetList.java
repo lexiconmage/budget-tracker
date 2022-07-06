@@ -75,13 +75,11 @@ public class BudgetList {
 			ResultSet resultSet = statement.executeQuery("");
 			
 			while(resultSet.next()) {
-				float mortgage = resultSet.getFloat("mortgage");
-				float rent = resultSet.getFloat("rent");
-				float utilities = resultSet.getFloat("utilities");
-				float cable = resultSet.getFloat("cable");
-				float water_gas_electric = resultSet.getFloat("water_gas_electric");
+				String expenseName = resultSet.getString("name");
+				Date date = resultSet.getDate("date");
+				float expenseAmount = resultSet.getFloat("amount");
 				
-				Expense expense = new Expense(mortgage, rent, utilities, cable, water_gas_electric);
+				Expense expense = new Expense(expenseAmount, expenseName, date);
 				expenseList.add(expense);
 			}
 			resultSet.close();
