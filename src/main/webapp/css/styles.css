@@ -133,3 +133,42 @@ html,body {
 	padding: 10px;
 	margin-left: 20px;
 }
+
+.home-body{
+	background: rgb(255,255,255);
+	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(137,198,207,0.8631827731092436) 4%, rgba(137,198,207,1) 49%);
+	font-family: "Abril Fatface"; 
+	font-size: 24px; 
+	font-style: normal; 
+	font-variant: normal; 
+	
+	
+}
+
+
+.home-introduction {
+	color: white;
+	margin-left: 500px;
+}
+
+.home-header{
+	background-color: #797CB5;
+}
+
+nav ul{
+	display:inline-block;
+	list-style-type: none;
+	padding: 10px;
+	
+}
+
+li a{
+	text-decoration: none;
+	color: white;
+}
+
+.logo {
+	text-align:center;
+	width: 200px;
+	display:inline-block;
+}
