@@ -57,7 +57,6 @@ public class ControllerServlet extends HttpServlet {
 			listBudget(request, response);
 			break;
 		case "/contact":
-			System.out.println("HIT");
 			getContact(request, response);
 			break;
 		default:
@@ -99,8 +98,28 @@ public class ControllerServlet extends HttpServlet {
 	 *  WAITING FOR CREATE BUDGET TO BE IMPLEMENTED. THEN WE CAN WORK ON POST
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String action = request.getPathInfo();
+		switch(action) {
+		case "/signup":
+			doSignup(request, response);
+			break;
+		case "/login":
+			doLogin(request, response);
+			break;
+		}
+	}
+	
+	private void doLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		new User(email, password).login();
+	}
+	
+	private void doSignup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		new User(name, email, password).create();
 	}
 	
 	private void listBudget(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
