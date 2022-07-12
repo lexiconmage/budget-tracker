@@ -1,5 +1,6 @@
 html,body {
   height: 100%;
+  margin:0%;
   
 }
 
@@ -134,41 +135,117 @@ html,body {
 	margin-left: 20px;
 }
 
-.home-body{
-	background: rgb(255,255,255);
-	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(137,198,207,0.8631827731092436) 4%, rgba(137,198,207,1) 49%);
-	font-family: "Abril Fatface"; 
-	font-size: 24px; 
-	font-style: normal; 
-	font-variant: normal; 
-	
-	
+.homepage{
+	color:white;
+	border-top-style:solid;
+	border-width: 7px;
+	border-image: radial-gradient(coral, lime, aqua, blue, magenta, red) 1;
+
+}
+
+h1,h2,p{
+	line-height:.3;
 }
 
 
-.home-introduction {
+.home-introduction{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	padding: 15px 0px 50px 30px;
+	background-image: linear-gradient( 91.9deg,  rgba(35,107,250,1) 6.3%, rgba(25,159,249,1) 98.9% );
+
+}
+
+
+.navbar img{
+	width:80px;
+	height:80px;
+	padding: 10px 0px 0px 10px;
+}
+.navbar {
+	display:flex;
+	justify-content:space-between;
+	background-image: linear-gradient( 91.9deg,  rgba(35,107,250,1) 6.3%, rgba(25,159,249,1) 98.9% );
+	align-items:center;
+
+}
+.currentTab{
+	background-color:rgba(75,179,249,1);
+	border-radius:20px;
+	padding:10px 25px 10px 25px;
+}
+.currentTab:hover{
+	background-color:rgba(35,179,249,1);
 	color: white;
-	margin-left: 500px;
-}
 
-.home-header{
-	background-color: #797CB5;
 }
 
 nav ul{
-	display:inline-block;
-	list-style-type: none;
-	padding: 10px;
+	display:flex;
+	flex-direction:row;
+}
+nav li{
+	text-decoration:none;
+	list-style-type:none;
+	margin-right:10px;
+	padding-right:10px;
 	
 }
 
+nav a{
+
+	padding:10px 15px 10px 15px;
+
+}
+nav a:hover{
+	color:rgba(35,179,249,1);
+
+}
 li a{
-	text-decoration: none;
-	color: white;
+	text-decoration:none;
+	font-size:25px;
+	
 }
 
-.logo {
-	text-align:center;
-	width: 200px;
-	display:inline-block;
+nav a{
+	text-decoration:none;
+	color:white;
+	
+}
+
+.login-link{
+	margin-top:40px;
+}
+.login-link a{
+	text-decoration:none;
+	color:black;
+	font-size:20px;
+	border-radius:10px;
+	padding:15px 50px 15px 50px;
+	background-color:white
+}
+.login-link a:hover{
+		background-color:rgba(75,179,249,1);
+		color:white;
+}
+
+.intro-bottom{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+ 	color:black;
+ 	margin-top:20px;
+ 	flex-direction:column;
+}
+
+
+.intro-bottom th{
+	font-size:20px;
+}
+.intro-bottom img{
+	width:170px;
+	height:170px;
+	padding:20px;
 }
