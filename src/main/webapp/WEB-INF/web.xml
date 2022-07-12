@@ -10,6 +10,12 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ControllerServlet</servlet-name>
-    <url-pattern>/ControllerServlet/*</url-pattern>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>default</servlet-name>
+  	<url-pattern>/css/*</url-pattern>
+  	<url-pattern>/pages/*</url-pattern>
+  	<url-pattern>/imgs/*</url-pattern>
   </servlet-mapping>
 </web-app>

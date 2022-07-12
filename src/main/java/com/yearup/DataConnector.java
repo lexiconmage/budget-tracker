@@ -25,9 +25,7 @@ public class DataConnector {
 			try {
 				String[] content = this.readFile(input).split("\n");
 				this.userName = content[0];
-				System.out.println(userName);
 				this.password = content[1];
-				System.out.println(password);
 			}
 			catch(IOException e) {
 				e.printStackTrace();
@@ -35,25 +33,21 @@ public class DataConnector {
 			
 		}
 		public Connection getConnection() throws SQLException {
-
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+			} catch (ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}
 		    Connection conn = null;
 		    Properties connectionProps = new Properties();
 		    connectionProps.put("user", this.userName);
 		    connectionProps.put("password", this.password);
 
-		    if (this.dbms.equals("mysql")) {
-		        conn = DriverManager.getConnection(
-		                   "jdbc:" + this.dbms + "://" +
-		                   this.serverName +
-		                   ":" + this.portNumber + "/",
-		                   connectionProps);
-		    } else if (this.dbms.equals("derby")) {
-		        conn = DriverManager.getConnection(
-		                   "jdbc:" + this.dbms + ":" +
-		                   this.dbName +
-		                   ";create=true",
-		                   connectionProps);
-		    }
+	        conn = DriverManager.getConnection(
+	                   "jdbc:" + this.dbms + "://" +
+	                   this.serverName +
+	                   ":" + this.portNumber + "/" + this.dbName,
+	                   connectionProps);
 		    System.out.println("Connected to database");
 		    return conn;
 		}

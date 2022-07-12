@@ -10,9 +10,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
+import jakarta.servlet.RequestDispatcher;
 
-import com.pluralsight.Book;
 
 /**
  * Servlet implementation class ControllerServlet
@@ -69,17 +68,17 @@ public class ControllerServlet extends HttpServlet {
 	//These are the methods that help with navigation. Waiting on DB and other functionalities to be placed
 	private void getHome(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 
-		request.getRequestDispatcher("/homepage.html").forward(request, response);
+		request.getRequestDispatcher("/pages/home.html").forward(request, response);
 	}
 	
 	private void getLogin(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 
-		request.getRequestDispatcher("/login.html").forward(request, response);
+		request.getRequestDispatcher("/pages/login.html").forward(request, response);
 	}
 	
 	private void getSignup(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 
-		request.getRequestDispatcher("/signup.html").forward(request, response);
+		request.getRequestDispatcher("/pages/signup.html").forward(request, response);
 	}
 	
 /**
@@ -91,7 +90,7 @@ public class ControllerServlet extends HttpServlet {
 //	}
 	
 	private void getContact(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
-		request.getRequestDispatcher("/contact.html").forward(request, response);
+		request.getRequestDispatcher("/pages/contact.html").forward(request, response);
 	}
 	
 	/**
@@ -108,7 +107,7 @@ public class ControllerServlet extends HttpServlet {
 		ArrayList<BudgetList> budgetArrList = list.getList();
 		
 		request.setAttribute("budget_list", budgetArrList);
-		request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/dashboard.jsp").forward(request, response);
 	}
 
 }
