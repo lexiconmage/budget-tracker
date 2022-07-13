@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import jakarta.servlet.RequestDispatcher;
@@ -129,21 +130,28 @@ public class ControllerServlet extends HttpServlet {
 	
 	private void doBudget(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, String[]> parameters = request.getParameterMap();
-		BudgetList budgetList = new BudgetList();
+		list.connect();
 		for(String key: parameters.keySet()) {
 			if(key.equals("salary") || key.equals("incomeother")) {
-				budgetList.addIncome(new Income(Integer.parseInt(parameters.get(key)[0]), key) );
+				list.addIncome(new Income(Integer.parseInt(parameters.get(key)[0]), key) );
 			}
 			else {
-				budgetList.addExpense(new Expense(Integer.parseInt(parameters.get(key)[0]), key) );
+				list.addExpense(new Expense(Integer.parseInt(parameters.get(key)[0]), key) );
 			}
 		}
+		list.disconnect();
+		request.getRequestDispatcher("/jsp/dashboard.jsp").forward(request, response);
 	}
 	
 	private void listBudget(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
-		ArrayList<BudgetList> budgetArrList = list.getList();
-		
-		request.setAttribute("budget_list", budgetArrList);
+		list.connect();
+		ArrayList<Income> incomeList = list.getIncomeList();
+		double incomeTotal = incomeList.stream().mapToDouble(i -> i.getAmount()).sum();
+		Map<String, String> categories = new HashMap<String, String>();
+		ArrayList<Expense> expenseList = list.getExpenseList();
+		list.disconnect();
+		request.setAttribute("income_total", incomeTotal);
+		request.setAttribute("expense_list", expenseList);
 		request.getRequestDispatcher("/jsp/dashboard.jsp").forward(request, response);
 	}
 
