@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+<title>Budget</title>
+</head>
+<body>
+    <header class=navbar>
+
+      <a href="home.html">
+           <div class="logo-image">
+         <img alt="logo" src="imgs/BT-modified.png">
+         </div>
+      </a>
+
+        <nav>
+            <ul>
+                <li ><a href="homepage">Home</a></li>
+                <li ><a href="dashboard" class="currentTab">Dashboard</a></li>
+                <li ><a href="settings">Settings</a></li>
+                <li><a href="contact">Contact Us</a></li>
+            </ul>
+        </nav>
+
+    </header>
+	
+		<main class="budget-form">
+				<h1 class="dashheading">Welcome to our simple yet efficient</h1>
+				<h1 class="dashheading">BUDGET TRACKER</h1>
+				<form action="budgetform" method="POST">
+					<div class="budgetlist">
+						<div class="box active">
+							<h2>Monthly Income</h2>
+							<input type="number" name="salary" id="salary-field" class="budget-form-field" placeholder="Salary/Wages"><br>
+							<input type="number" name="incomeother" id="incomeother-field" class="budget-form-field" placeholder="Other Income"><br>
+						</div>
+						<div class="box ">
+							<h2>Housing Expenses</h2>
+							<input type="number" name="mortgage" id="mortgage-field" class="budget-form-field" placeholder="Mortgage"><br>
+							<input type="number" name="rent" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="number" name="utilities" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="number" name="billother" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+						</div>
+						<div class="box ">
+							<h2>Transportation</h2>
+							<input type="number" name="carpay" id="mortgage-field" class="budget-form-field" placeholder="Mortgage"><br>
+							<input type="number" name="carins" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="number" name="gas" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="number" name="repairs" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+						</div>
+						<div class="box ">
+							<h2>Education</h2>
+							<input type="number" name="studentloan" id="mortgage-field" class="budget-form-field" placeholder="Mortgage"><br>
+							<input type="number" name="schoolsupply" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="number" name="tuition" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="number" name="textbooks" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+						</div>
+						<div class="box ">
+							<h2>Personal Expenses</h2>
+							<input type="number" name="groceries" id="mortgage-field" class="budget-form-field" placeholder="Mortgage"><br>
+							<input type="number" name="clothing" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="number" name="entertainment" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="number" name="medical" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="number" name="personalother" id="rent-field" class="budget-form-field" placeholder="Rent"><br>
+							<input type="submit" value="Save">
+						</div>
+					</div>
+				</form>
+		</main>
+ 		
+	
+</body>
+</html>
