@@ -1,5 +1,5 @@
 USE budgettracker;
-CREATE TABLE categories (
+CREATE TABLE titles (
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 `title` varchar(255) DEFAULT NULL,
 `category` varchar(255) DEFAULT NULL,
@@ -7,7 +7,14 @@ CREATE TABLE categories (
 PRIMARY KEY(`id`)
 );
 
-INSERT INTO categories (`title`, `category`, `readable`) VALUES
+CREATE TABLE categories (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`category` varchar(255) DEFAULT NULL,
+`readable` varchar(255) DEFAULT NULL,
+PRIMARY KEY(`id`)
+);
+
+INSERT INTO titles (`title`, `category`, `readable`) VALUES
 ("salary", "income", "Salary/Wages"),
 ("incomerother", "income", "Other Income"),
 ("mortgage", "housing", "Mortgage"),
@@ -27,3 +34,10 @@ INSERT INTO categories (`title`, `category`, `readable`) VALUES
 ("entertainment", "personal", "Entertainment"),
 ("medical", "personal", "Medical Fees"),
 ("personalother", "personal", "Other");
+
+INSERT INTO categories (`category`, `readable`) VALUES 
+("income", "Monthly Income"),
+("housing", "Housing Expenses"),
+("transport", "Transportation"),
+("education", "Education"),
+("personal", "Personal Expenses");
