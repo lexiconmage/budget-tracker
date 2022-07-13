@@ -94,7 +94,7 @@ public class BudgetList {
 		ArrayList<Income> incomeList = new ArrayList<>();
 		try {
 			Statement statement = jdbcConnection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT title, amount FROM budgetlist WHERE amount > 0");
+			ResultSet resultSet = statement.executeQuery("SELECT title, amount FROM budgetitem WHERE amount > 0");
 			
 			while(resultSet.next()) {
 				String incomeName = resultSet.getString("title");
@@ -123,7 +123,7 @@ public class BudgetList {
 		ArrayList<Expense> expenseList = new ArrayList<>();
 		try {
 			Statement statement = jdbcConnection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT title, amount FROM budgetlist WHERE amount < 0");
+			ResultSet resultSet = statement.executeQuery("SELECT title, amount FROM budgetitem WHERE amount < 0");
 			
 			while(resultSet.next()) {
 				String expenseName = resultSet.getString("title");
