@@ -296,6 +296,9 @@ nav a{
 	padding: 12px;
 	background-color: white;
 }
+.boxForm input[type=submit]:hover {
+	cursor: pointer;
+}
 
 #dashform-heading{
 	text-align:center;
@@ -319,7 +322,6 @@ nav a{
 .box{
 /*     border:2px solid black; */
     width:600px;
-    height:600px;
     margin-top:5%;
     margin-bottom:5%;
     border-radius:5%;
@@ -328,6 +330,7 @@ nav a{
 }
 .flexbox {
 	display: flex;
+	margin-bottom: 5%;
 }
 .flexbox .leftbox {
 	width: 50%;

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,10 +40,10 @@
 					<div class="flexbox">
 						<div class="leftbox">
 							<h2 class="category">Monthly Income</h2>
-							<p>${income_total}</p>
+							<p><fmt:formatNumber value="${income_total}" type="currency"/></p>
 							<c:forEach var="item" items="${expense_list}">
 								<h2>${item.getName()}</h2>
-								<p>${item.getAmount() }</p>
+								<p><fmt:formatNumber value="${item.getAmount()}" type="currency"/></p>
 							</c:forEach>
 						</div>
 						<div class="rightbox">
@@ -54,7 +55,7 @@
 				
 				
 			</div>
-			<a href="/" ><div class="addform">
+			<a href="budgetform" ><div class="addform">
 				<p>+</p>
 			</div></a>
 		</main>
