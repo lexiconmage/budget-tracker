@@ -81,15 +81,29 @@ public class BudgetList {
 			resultSet.close();
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		disconnect();
 		return budgetList;
 	}
 	
+	public float getCollatedIncome() {
+		connect();
+		float incomeTotal = 0;
+		try {
+			Statement statement = jdbcConnection.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT SUM(amount) AS amount FROM budgetitem WHERE amount > 0");
+			resultSet.next();
+			incomeTotal = resultSet.getFloat("amount");
+			resultSet.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		disconnect();
+		return incomeTotal;
+	}
 	public ArrayList<Income> getIncomeList() {
-		//TODO: implement
 		connect();
 		ArrayList<Income> incomeList = new ArrayList<>();
 		try {
@@ -106,7 +120,6 @@ public class BudgetList {
 			resultSet.close();
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		disconnect();
@@ -127,6 +140,29 @@ public class BudgetList {
 			
 			while(resultSet.next()) {
 				String expenseName = resultSet.getString("title");
+				float expenseAmount = resultSet.getFloat("amount");
+				
+				Expense expense = new Expense(expenseAmount, expenseName);
+				expenseList.add(expense);
+			}
+			resultSet.close();
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		disconnect();
+		return expenseList;
+	}
+	public ArrayList<Expense> getCollatedExpenseList() {
+		connect();
+		ArrayList<Expense> expenseList = new ArrayList<>();
+		try {
+			Statement statement = jdbcConnection.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT categories.category, SUM(budgetitem.amount) AS amount FROM budgetitem INNER JOIN categories on categories.title=budgetitem.title WHERE amount < 0 GROUP BY categories.category;");
+			
+			while(resultSet.next()) {
+				String expenseName = resultSet.getString("category");
 				float expenseAmount = resultSet.getFloat("amount");
 				
 				Expense expense = new Expense(expenseAmount, expenseName);

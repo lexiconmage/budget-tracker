@@ -130,7 +130,6 @@ public class ControllerServlet extends HttpServlet {
 	
 	private void doBudget(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, String[]> parameters = request.getParameterMap();
-		list.connect();
 		for(String key: parameters.keySet()) {
 			if(key.equals("salary") || key.equals("incomeother")) {
 				list.addIncome(new Income(Integer.parseInt(parameters.get(key)[0]), key) );
@@ -139,17 +138,12 @@ public class ControllerServlet extends HttpServlet {
 				list.addExpense(new Expense(Integer.parseInt(parameters.get(key)[0]), key) );
 			}
 		}
-		list.disconnect();
 		request.getRequestDispatcher("/jsp/dashboard.jsp").forward(request, response);
 	}
 	
 	private void listBudget(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
-		list.connect();
-		ArrayList<Income> incomeList = list.getIncomeList();
-		double incomeTotal = incomeList.stream().mapToDouble(i -> i.getAmount()).sum();
-		Map<String, String> categories = new HashMap<String, String>();
-		ArrayList<Expense> expenseList = list.getExpenseList();
-		list.disconnect();
+		float incomeTotal = list.getCollatedIncome();
+		ArrayList<Expense> expenseList = list.getCollatedExpenseList();
 		request.setAttribute("income_total", incomeTotal);
 		request.setAttribute("expense_list", expenseList);
 		request.getRequestDispatcher("/jsp/dashboard.jsp").forward(request, response);

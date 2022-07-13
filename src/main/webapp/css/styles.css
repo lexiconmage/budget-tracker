@@ -320,19 +320,31 @@ nav a{
 /*     border:2px solid black; */
     width:600px;
     height:600px;
-    margin-top:20px;
-    margin-bottom:20px;
+    margin-top:5%;
+    margin-bottom:5%;
     border-radius:5%;
     background-image: linear-gradient( 91.9deg,  rgba(35,107,250,1) 6.3%, rgba(25,159,249,1) 98.9% );
     color:white;
 }
-
-#month{
+.flexbox {
+	display: flex;
+}
+.flexbox .leftbox {
+	width: 50%;
+	margin-top: 5%;
+	margin-left: 5%;
+}
+.flexbox .rightbox {
+	width: 50%;
+	margin-top: 5%;
+	margin-right: 5%;
+}
+.month{
     text-align:center;
 }
 
 .category{
-    margin:45px 0px 0px 60px;
+    margin:20px 0px 0px 0px;
 }
 
 .box p{
