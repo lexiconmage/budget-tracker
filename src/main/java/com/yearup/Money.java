@@ -3,9 +3,8 @@ package com.yearup;
 import java.util.Date;
 
 public class Money {
-	float value;
-	String title;
-	Date date;
+	private float value;
+	private String title;
 	public Money() {
 		//TODO: implement
 	}

@@ -6,12 +6,10 @@ public class Expense extends Money {
 //	expenseAmount, expenseName, date
 	private float amount; 
 	private String name; 
-	private Date date; 
 	
-	public Expense(float amount, String name, Date date) {
+	public Expense(float amount, String name) {
 		this.amount = amount;
 		this.name = name;
-		this.date = date;
 	}
 	
 	public void setAmount(float val) {

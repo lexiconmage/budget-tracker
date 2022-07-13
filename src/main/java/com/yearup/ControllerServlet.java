@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Map;
 
 import jakarta.servlet.RequestDispatcher;
 
@@ -56,6 +58,9 @@ public class ControllerServlet extends HttpServlet {
 		case "/dashboard":
 			listBudget(request, response);
 			break;
+		case "/budgetform":
+			getBudgetform(request, response);
+			break;
 		case "/contact":
 			getContact(request, response);
 			break;
@@ -80,13 +85,10 @@ public class ControllerServlet extends HttpServlet {
 		request.getRequestDispatcher("/pages/signup.html").forward(request, response);
 	}
 	
-/**
- * 	Not needed since we are using listBudget ---------------------------------------------------
- */
-//	private void getDash(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
-//
-//		request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
-//	}
+	private void getBudgetform(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
+
+		request.getRequestDispatcher("/pages/budgetform.html").forward(request, response);
+	}
 	
 	private void getContact(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 		request.getRequestDispatcher("/pages/contact.html").forward(request, response);
@@ -106,6 +108,9 @@ public class ControllerServlet extends HttpServlet {
 		case "/login":
 			doLogin(request, response);
 			break;
+		case "/budgetform":
+			doBudget(request, response);
+			break;
 		}
 	}
 	
@@ -122,11 +127,24 @@ public class ControllerServlet extends HttpServlet {
 		new User(name, email, password).create();
 	}
 	
+	private void doBudget(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Map<String, String[]> parameters = request.getParameterMap();
+		BudgetList budgetList = new BudgetList();
+		for(String key: parameters.keySet()) {
+			if(key.equals("salary") || key.equals("incomeother")) {
+				budgetList.addIncome(new Income(Integer.parseInt(parameters.get(key)[0]), key) );
+			}
+			else {
+				budgetList.addExpense(new Expense(Integer.parseInt(parameters.get(key)[0]), key) );
+			}
+		}
+	}
+	
 	private void listBudget(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 		ArrayList<BudgetList> budgetArrList = list.getList();
 		
 		request.setAttribute("budget_list", budgetArrList);
-		request.getRequestDispatcher("/pages/dashboard.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/dashboard.jsp").forward(request, response);
 	}
 
 }

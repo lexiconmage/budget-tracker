@@ -97,11 +97,10 @@ public class BudgetList {
 			ResultSet resultSet = statement.executeQuery("SELECT title, amount FROM budgetlist WHERE amount > 0");
 			
 			while(resultSet.next()) {
-				String incomeName = resultSet.getString("incomeName");
-				Date date = resultSet.getDate("date");
-				float incomeAmount = resultSet.getFloat("incomeAmount");
+				String incomeName = resultSet.getString("title");
+				float incomeAmount = resultSet.getFloat("amount");
 				
-				Income income = new Income(incomeAmount,incomeName,date);
+				Income income = new Income(incomeAmount,incomeName);
 				incomeList.add(income);
 			}
 			resultSet.close();
@@ -127,11 +126,10 @@ public class BudgetList {
 			ResultSet resultSet = statement.executeQuery("SELECT title, amount FROM budgetlist WHERE amount < 0");
 			
 			while(resultSet.next()) {
-				String expenseName = resultSet.getString("name");
-				Date date = resultSet.getDate("date");
+				String expenseName = resultSet.getString("title");
 				float expenseAmount = resultSet.getFloat("amount");
 				
-				Expense expense = new Expense(expenseAmount, expenseName, date);
+				Expense expense = new Expense(expenseAmount, expenseName);
 				expenseList.add(expense);
 			}
 			resultSet.close();
@@ -165,7 +163,7 @@ public class BudgetList {
 		try {
 			PreparedStatement statement = jdbcConnection.prepareStatement(sql);
 			statement.setString(1, exp.getName());
-			statement.setFloat(2, exp.getAmount());
+			statement.setFloat(2, -1 * exp.getAmount());
 			
 			rowInserted = statement.executeUpdate() > 0;
 			statement.close();
