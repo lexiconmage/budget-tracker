@@ -6,43 +6,45 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 <link href='https://fonts.googleapis.com/css?family=Abril Fatface' rel='stylesheet'>
 </head>
-<body>
+<body class="contactbody">
 
-	<header class="home-header">
-	
-		
-		<nav>
-			<ul>			
-				<li><a href="signup">Sign Up</a></li>
-				<li><a href="contact">Contact Us</a></li>
-			</ul>
-		</nav>
-		
-		<a href="home.html" >
-         			<img alt="logo" class="logo" src="imgs/BT-modified.png">
-      	</a>
-      	
-		
-	</header>
-	
-	<main>
-	
-	<section class="contact-info">
-		<h1>Contact Information</h1>
-		<p>If you have any questions, comments, or concerns, feel free to let us know!</p>
-		<p>+1 (555)-555-5555</p>
-		<p>example@gmail.com</p>
-	</section>
-	
-	<section class="contact-form">
-		
-		<input type="text" name="first" id="first-name-field" class="contact-form-field" placeholder="First Name"><br>
-		<input type="text" name="last" id="last-name-field" class="contact-form-field" placeholder="Last Name"><br>
-		<input type="text" name="email" id="contact-email-field" class="contact-form-field" placeholder="Email"><br>
-		<textarea name="message" id="contact-message-field" placeholder="Message"></textarea>
-		
-	</section>
-	
-	</main>
+     <header class=navbar>
+
+      <a href="home.html">
+           <div class="logo-image">
+         <img alt="logo" src="imgs/BT-modified.png">
+         </div>
+      </a>
+
+        <nav>
+            <ul>
+                <li ><a href="homepage">Home</a></li>
+               
+                <li><a href="contact" class="currentTab">Contact Us</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main >
+    <div class="contactCard">
+    <section class="contact-info">
+        <h1>Contact Information</h1>
+        <p>If you have any questions, comments, or concerns, feel free to let us know!</p>
+        <p>+1 (555)-555-5555</p>
+        <p>example@gmail.com</p>
+    </section>
+
+    <section class="contact-form">
+
+        <input type="text" name="first" id="first-name-field" class="contact-form-field" placeholder="First Name"><br>
+        <input type="text" name="last" id="last-name-field" class="contact-form-field" placeholder="Last Name"><br>
+        <input type="text" name="email" id="contact-email-field" class="contact-form-field" placeholder="Email"><br>
+        <textarea name="message" id="contact-message-field" placeholder="Message"></textarea>
+      <button id="submit-form">Submit</button>
+
+    </section>
+</div>
+    </main>
 	
 </body>
