@@ -159,11 +159,12 @@ public class BudgetList {
 		ArrayList<Expense> expenseList = new ArrayList<>();
 		try {
 			Statement statement = jdbcConnection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT categories.readable, SUM(budgetitem.amount) AS amount \r\n"
-					+ "FROM budgetitem \r\n"
-					+ "INNER JOIN titles on titles.title=budgetitem.title \r\n"
-					+ "INNER JOIN categories on titles.category=categories.category\r\n"
-					+ "WHERE amount < 0 GROUP BY titles.category;");
+			ResultSet resultSet = statement.executeQuery("SELECT categories.readable, SUM(budgetitem.amount) AS amount, budgetlist.id as list_id "
+					+ "FROM budgetitem "
+					+ "INNER JOIN titles on titles.title=budgetitem.title "
+					+ "INNER JOIN categories on titles.category=categories.category "
+					+ "INNER JOIN budgetlist on budgetitem.list_id=budgetlist.id "
+					+ "WHERE amount < 0 GROUP BY titles.category, budgetlist.id;");
 			
 			while(resultSet.next()) {
 				String expenseName = resultSet.getString("readable");

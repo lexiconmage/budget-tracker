@@ -65,6 +65,9 @@ public class ControllerServlet extends HttpServlet {
 		case "/contact":
 			getContact(request, response);
 			break;
+		case "/settings":
+			getSettings(request, response);
+			break;
 		default:
 			response.sendError(0);
 		}
@@ -93,6 +96,10 @@ public class ControllerServlet extends HttpServlet {
 	
 	private void getContact(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
 		request.getRequestDispatcher("/pages/contact.html").forward(request, response);
+	}
+	
+	private void getSettings(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
+		request.getRequestDispatcher("/pages/settings.html").forward(request, response);
 	}
 	
 	/**
